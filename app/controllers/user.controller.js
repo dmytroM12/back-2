@@ -1,4 +1,6 @@
-const User = require("../models/user.model")
+const db = require("../models");
+const User = db.user;
+const Op = db.Sequelize.Op;
 exports.addUser = (req, res) => {
     
     if (!req.body.email) {
@@ -10,7 +12,7 @@ exports.addUser = (req, res) => {
     
     const user = {
       email: req.body.email,
-      description: req.body.password,
+      password: req.body.password,
     };
     
     User.create(user)
@@ -59,7 +61,7 @@ exports.addUser = (req, res) => {
   };
   exports.updateUser = (req, res) => {
     const id = req.params.id;
-    Tutorial.update(req.body, {
+    User.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -69,7 +71,7 @@ exports.addUser = (req, res) => {
           });
         } else {
           res.send({
-            message: `Cannot update User with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+            message: `Cannot update User with id=${id}. Maybe User was not found or req.body is empty!`
           });
         }
       })
@@ -81,7 +83,7 @@ exports.addUser = (req, res) => {
     };
     exports.deleteUser = (req, res) => {
         const id = req.params.id;
-        Tutorial.destroy({
+        User.destroy({
           where: { id: id }
         })
           .then(num => {
@@ -91,7 +93,7 @@ exports.addUser = (req, res) => {
               });
             } else {
               res.send({
-                message: `Cannot delete User with id=${id}. Maybe Tutorial was not found!`
+                message: `Cannot delete User with id=${id}. Maybe Delete was not found!`
               });
             }
           })
