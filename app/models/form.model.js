@@ -1,6 +1,5 @@
 
 module.exports = (sequelize, Sequelize) => {
-    const User = require("./user.model");
     const Form = sequelize.define("form", {
       name: {
         type: Sequelize.STRING,

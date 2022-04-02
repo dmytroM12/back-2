@@ -4,7 +4,9 @@ const cors = require("cors");
 const app = express();
 
 
-const userRoutes= require('./app/routes/user.router')
+const userRoutes= require('./app/routes/user.routes')
+const formRoutes=require('./app/routes/form.routes')
+
 
 const db = require("./app/models");
 
@@ -23,12 +25,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/user',userRoutes)
+app.use('/form',formRoutes)
 
 app.get("/", (req, res) => {
   res.json({ message: "Server is up." });
 });
 
-// set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

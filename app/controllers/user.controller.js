@@ -1,6 +1,5 @@
 const db = require("../models");
 const User = db.user;
-const Op = db.Sequelize.Op;
 exports.addUser = (req, res) => {
     
     if (!req.body.email) {
@@ -22,14 +21,12 @@ exports.addUser = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the Tutorial."
+            err.message || "Some error occurred while creating the User."
         });
       });
   };
 
   exports.getUsers = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
     User.findAll()
       .then(data => {
         res.send(data);
@@ -37,7 +34,7 @@ exports.addUser = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving tutorials."
+            err.message || "Some error occurred while retrieving the Users."
         });
       });
   };
@@ -77,7 +74,7 @@ exports.addUser = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Uer with id=" + id
+          message: "Error updating User with id=" + id
         });
       });
     };
