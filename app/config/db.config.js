@@ -4,7 +4,6 @@ module.exports = {
     PASSWORD: "dima1288",
     DB: "cube2",
     dialect: "postgres",
-    port:5433,
     pool: {
       max: 5,
       min: 0,
