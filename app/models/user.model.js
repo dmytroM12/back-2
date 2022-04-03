@@ -3,8 +3,8 @@ module.exports = (sequelize, Sequelize) => {
 
       email: {
         type: Sequelize.STRING,
-        unique: true,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       password: {
         type: Sequelize.STRING,

@@ -3,7 +3,8 @@ module.exports = (sequelize, Sequelize) => {
     const Form = sequelize.define("form", {
       name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       rows: {
         type: Sequelize.INTEGER,
